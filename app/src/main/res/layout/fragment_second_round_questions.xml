@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.SecondRoundQuestionsFragment">
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="197dp"
+        android:layout_height="344dp"
+        android:layout_marginTop="376dp"
+        android:src="@drawable/wondering__222"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="411dp"
+        android:layout_height="126dp"
+        android:background="@color/magenta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtNowAnswers"
+        android:layout_width="303dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="36dp"
+        android:text="Now answers:"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPlayerName"
+        android:layout_width="305dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="80dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtQuestion"
+        android:layout_width="297dp"
+        android:layout_height="137dp"
+        android:layout_marginTop="144dp"
+        android:background="@drawable/stroke_magenta"
+        android:paddingTop="20dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtFalse"
+        android:layout_width="133dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="52dp"
+        android:text="False"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:paddingTop="10dp"
+        android:background="@drawable/mag_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtTrue" />
+
+    <TextView
+        android:id="@+id/txtTrue"
+        android:layout_width="133dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="148dp"
+        android:text="True"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:paddingTop="10dp"
+        android:background="@drawable/mag_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuestion" />
+
+    <TextView
+        android:id="@+id/txtPass1"
+        android:layout_width="133dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="152dp"
+        android:background="@drawable/mag_white"
+        android:text="PASS"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:paddingTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPass2"
+        android:layout_width="133dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="152dp"
+        android:background="@drawable/mag_white"
+        android:text="PASS"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:paddingTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/timerRoundTwo"
+        android:layout_width="175dp"
+        android:layout_height="101dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.473" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

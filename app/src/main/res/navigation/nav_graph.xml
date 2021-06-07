@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+
+    <fragment
+        android:id="@+id/quizAppStart"
+        android:name="com.example.quiz_game_project.ui.fragments.QuizAppStartFragment"
+        android:label="fragment_quiz_app_start"
+        tools:layout="@layout/fragment_quiz_app_start" >
+        <action
+            android:id="@+id/action_quizAppStart_to_existingGames"
+            app:destination="@id/existingGames" />
+        <action
+            android:id="@+id/action_quizAppStart_to_createGame"
+            app:destination="@id/createGame" />
+        <action
+            android:id="@+id/action_quizAppStart_to_gameHistory"
+            app:destination="@id/gameHistory" />
+    </fragment>
+    <fragment
+        android:id="@+id/existingGames"
+        android:name="com.example.quiz_game_project.ui.fragments.ExistingGamesFragment"
+
+        tools:layout="@layout/fragment_existing_games" >
+        <action
+            android:id="@+id/action_existingGames_to_gameHistory"
+            app:destination="@id/gameHistory" />
+        <action
+            android:id="@+id/action_existingGames_to_gameLeaders"
+            app:destination="@id/gameLeaders" />
+        <action
+            android:id="@+id/action_existingGames_to_addPlayerFragment"
+            app:destination="@id/addPlayerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createGame"
+        android:name="com.example.quiz_game_project.ui.fragments.CreateGameFragment"
+
+        tools:layout="@layout/fragment_create_game" >
+        <action
+            android:id="@+id/action_createGame_to_quizAppStart"
+            app:destination="@id/quizAppStart" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameHistory"
+        android:name="com.example.quiz_game_project.ui.fragments.GameHistoryFragment"
+        android:label="fragment_game_history"
+        tools:layout="@layout/fragment_game_history" />
+    <fragment
+        android:id="@+id/gameLeaders"
+        android:name="com.example.quiz_game_project.ui.fragments.GameLeadersFragment"
+        android:label="fragment_game_leaders"
+        tools:layout="@layout/fragment_game_leaders" />
+    <fragment
+        android:id="@+id/addPlayerFragment"
+        android:name="com.example.quiz_game_project.ui.fragments.AddPlayerFragment"
+
+        tools:layout="@layout/fragment_add_player" >
+        <action
+            android:id="@+id/action_addPlayerFragment_to_firstRoundPutFingersFragment2"
+            app:destination="@id/firstRoundPutFingersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firstRoundPutFingersFragment"
+        android:name="com.example.quiz_game_project.ui.fragments.FirstRoundPutFingersFragment"
+        android:label="fragment_first_round_put_fingers"
+        tools:layout="@layout/fragment_first_round_put_fingers" >
+        <action
+            android:id="@+id/action_firstRoundPutFingersFragment_to_firstRoundQuestionsFragment"
+            app:destination="@id/firstRoundQuestionsFragment" />
+        <action
+            android:id="@+id/action_firstRoundPutFingersFragment_to_firstRoundResultsFragment"
+            app:destination="@id/firstRoundResultsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firstRoundQuestionsFragment"
+        android:name="com.example.quiz_game_project.ui.fragments.FirstRoundQuestionsFragment"
+        android:label="fragment_first_round_questions"
+        tools:layout="@layout/fragment_first_round_questions" >
+        <action
+            android:id="@+id/action_firstRoundQuestionsFragment_to_firstRoundResultsFragment"
+            app:destination="@id/firstRoundResultsFragment" />
+        <action
+            android:id="@+id/action_firstRoundQuestionsFragment_to_firstRoundPutFingersFragment"
+            app:destination="@id/firstRoundPutFingersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firstRoundResultsFragment"
+        android:name="com.example.quiz_game_project.ui.fragments.FirstRoundResultsFragment"
+        android:label="fragment_first_round_results"
+        tools:layout="@layout/fragment_first_round_results" >
+        <action
+            android:id="@+id/action_firstRoundResultsFragment_to_secondRoundCategoriesChoiceFragment"
+            app:destination="@id/secondRoundCategoriesChoiceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondRoundQuestionsFragment2"
+        android:name="com.example.quiz_game_project.ui.fragments.SecondRoundQuestionsFragment"
+        android:label="fragment_second_round_questions"
+        tools:layout="@layout/fragment_second_round_questions" >
+        <action
+            android:id="@+id/action_secondRoundQuestionsFragment2_to_finalResultsFragment"
+            app:destination="@id/finalResultsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondRoundCategoriesChoiceFragment"
+        android:name="com.example.quiz_game_project.ui.fragments.SecondRoundCategoriesChoiceFragment"
+        android:label="fragment_second_round_categories_choice"
+        tools:layout="@layout/fragment_second_round_categories_choice" >
+        <action
+            android:id="@+id/action_secondRoundCategoriesChoiceFragment_to_secondRoundQuestionsFragment2"
+            app:destination="@id/secondRoundQuestionsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/finalResultsFragment"
+        android:name="com.example.quiz_game_project.ui.fragments.FinalResultsFragment"
+        android:label="fragment_final_results"
+        tools:layout="@layout/fragment_final_results" >
+        <action
+            android:id="@+id/action_finalResultsFragment_to_splashFragment"
+            app:destination="@id/splashFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.quiz_game_project.ui.fragments.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_quizAppStart"
+            app:destination="@id/quizAppStart" />
+    </fragment>
+</navigation>
