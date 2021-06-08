@@ -12,8 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.quiz_game_project.PlayData.FirstRoundCounter;
+import com.example.quiz_game_project.QuestionCountdownTimer;
 import com.example.quiz_game_project.R;
 import com.example.quiz_game_project.ThreadUtils;
 import com.example.quiz_game_project.data.QuestionsCategoryOneRepo;
@@ -39,7 +41,6 @@ public class FirstRoundPutFingersFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
     }
 
     @Override
@@ -52,8 +53,6 @@ public class FirstRoundPutFingersFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        // да се изнесат във функции!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         name1 = getArguments().getString("name1");
         name2 = getArguments().getString("name2");
@@ -68,7 +67,17 @@ public class FirstRoundPutFingersFragment extends Fragment {
         } else {
             Random rand = new Random();
             int randNumber = rand.nextInt(2);
-            setQuestion(randNumber);
+
+            startTimer(4, binding.txtQuestionBox2,
+                    "prepare to answer in");
+
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    setQuestion(randNumber);
+                }
+            }, 5000);
+
 
             names = new String[20];
             i = 0;
@@ -92,7 +101,6 @@ public class FirstRoundPutFingersFragment extends Fragment {
                 public void run() {
                     Bundle fragmentData = new Bundle();
                     if (i == 0) {
-//                    Log.i("Info log", "----------????? " + FirstRoundCounter.roundNumber);
                         restartFragment();
                     } else if (i == 1) {
                         fragmentData.putString("name1", names[0]);
@@ -104,7 +112,7 @@ public class FirstRoundPutFingersFragment extends Fragment {
                     }
                 }
 
-            }, CurrentGame.putFingersTimeToClick*1000);
+            }, CurrentGame.putFingersTimeToClick*1000 + 5000);
         }
 
     }
@@ -140,8 +148,6 @@ public class FirstRoundPutFingersFragment extends Fragment {
         roundCounter++;
         FirstRoundCounter.roundNumber = roundCounter;
         FirstRoundCounter.randNumber = randNumber;
-//        Log.i("Info log",
-//                "-------------------- " + FirstRoundCounter.roundNumber);
     }
 
     private void onButtonAnswerClicked(View view, String name) {
@@ -159,5 +165,7 @@ public class FirstRoundPutFingersFragment extends Fragment {
         }
     }
 
-
+    private void startTimer(int sec, TextView tv, String text) {
+        new QuestionCountdownTimer(tv, sec, text).reverseTimer(sec, tv);
+    }
 }

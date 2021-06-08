@@ -17,7 +17,6 @@ public class CategoryRepository {
         this.data = new Category[]{};
     }
 
-  //----------------------------------------------------------------------------
     public void saveCategories(Category[] data) {
         this.data = data;
     }
@@ -43,5 +42,4 @@ public class CategoryRepository {
         }
         return categoryId;
     }
-
 }

@@ -42,7 +42,6 @@ public class SecondRoundCategoriesChoiceFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
     }
 
     @Override
@@ -105,8 +104,6 @@ public class SecondRoundCategoriesChoiceFragment extends Fragment {
             ThreadUtils.mainThread().post(() -> Navigation.findNavController(view).navigate(R.id.action_secondRoundCategoriesChoiceFragment_to_secondRoundQuestionsFragment2,
                     fragmentData));
         }
-
-
     }
 
     private List<String> getPlayerOneCategories() {

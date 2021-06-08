@@ -15,18 +15,13 @@ import javax.inject.Inject;
 
 public class QuizAppStartController {
 
-//    private AuthenticationManager authenticationManager;
     private QuizAppStartControllerCallback callback;
     private AsyncDatabase.DataReceivedListener callback1;
     private ApiWrapper apiWrapper;
     private GameEntity gameEntity;
 
-//    private AsyncDatabase asyncDatabase;
-//    public MutableLiveData<String> showErrorLiveData = new MutableLiveData<>();
-
     @Inject
     public QuizAppStartController(QuizAppStartControllerCallback callback) {
-//        this.authenticationManager = authenticationManager;
         this.callback = callback;
     }
 
@@ -46,13 +41,13 @@ public class QuizAppStartController {
     public void saveAllCategories() {
         ApiWrapper.getInstance().getAllCategories(new ApiWrapper.OnApiResultListener<Category[]>() {
             @Override
-        public void onSuccess(Category[] data) {
+            public void onSuccess(Category[] data) {
                 callback.saveCategories(data);
             }
 
             @Override
             public void onFailure() {
-//
+
             }
         });
     }
@@ -62,39 +57,34 @@ public class QuizAppStartController {
         ApiWrapper.getInstance().getTheQuestions(15,
                 categoryNumber, difficulty, "multiple",
                 new ApiWrapper.OnApiResultListener<Result[]>() {
-            @Override
-            public void onSuccess(Result[] data) {
-                callback.saveQuestions(data, categoryOne, categoryTwo);
-            }
+                    @Override
+                    public void onSuccess(Result[] data) {
+                        callback.saveQuestions(data, categoryOne, categoryTwo);
+                    }
 
-            @Override
-            public void onFailure() {
-//
-            }
-        });
+                    @Override
+                    public void onFailure() {
+
+                    }
+                });
     }
 
-    //ново!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void saveRoundTwoQuestions(int categoryNumber, String categoryOne, String categoryTwo,
                                       int difficulty) {
-//        Log.i("Info log",
-//                "-----@@@@@@@@------ " + difficulty);
         ApiWrapper.getInstance().getRoundTwoQuestions(15,
                 categoryNumber, difficulty, "boolean",
                 new ApiWrapper.OnApiResultListener<Result[]>() {
                     @Override
                     public void onSuccess(Result[] data) {
-//                        Log.i("Info log",
-//                                "-----@@@@@@@@------ " + data.length);
                         callback.saveRoundTwoQuestions(data, categoryOne, categoryTwo);
                     }
 
                     @Override
                     public void onFailure() {
-//
+
                     }
                 });
-    }//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    }
 
 
 
@@ -112,10 +102,6 @@ public class QuizAppStartController {
         void showGames(List<GameEntity> data);
         void saveCategories(Category[] data);
         void saveQuestions(Result[] data, String categoryOne, String categoryTwo);
-
-        //new---------------------------------------------------------------------------------
         void saveRoundTwoQuestions(Result[] data, String categoryOne, String categoryTwo);
-
     }
-
 }

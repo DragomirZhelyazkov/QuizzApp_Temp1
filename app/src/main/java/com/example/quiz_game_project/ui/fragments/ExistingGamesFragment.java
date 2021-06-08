@@ -55,7 +55,7 @@ public class ExistingGamesFragment extends Fragment {
 
     }
 
-    private void initFragmentViews() {// Да се оправи!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    private void initFragmentViews() {
         AsyncDatabase.getInstance().getGameById(id,
                 new AsyncDatabase.DataReceivedListener<GameEntity>() {
             @Override
@@ -71,7 +71,6 @@ public class ExistingGamesFragment extends Fragment {
                 binding.ratingBar.setRating((float) game.getDifficulty());
                 binding.txtGame.setText("QUIZZ GAME");
 
-//                currentGame = new CurrentGame();
                 CurrentGame.uid = game.getUid();
                 CurrentGame.icon=game.getIcon();
                 CurrentGame.name=game.getName();
@@ -115,16 +114,11 @@ public class ExistingGamesFragment extends Fragment {
         Navigation.findNavController(view).navigate(R.id.action_existingGames_to_addPlayerFragment, fragmentData);
     }
 
-    private void setupToolbar(@NonNull View view) {//в този метод свързваме toolbar и navController
-        //създаваме Нав-контролер, containerView - къде се намира nav_graph
+    private void setupToolbar(@NonNull View view) {
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_container);
-        //долното - готова схема копирана от сайт
         AppBarConfiguration appBarConfiguration =
                 new AppBarConfiguration.Builder(navController.getGraph()).build();
-        //създаваме тоолбар
         Toolbar toolbar = view.findViewById(R.id.toolbar3);
-//        toolbar.setTitle(CurrentGame.name);
-        //свързваме toolbar с navController
         NavigationUI.setupWithNavController(
                 toolbar, navController, appBarConfiguration);
     }

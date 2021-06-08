@@ -28,9 +28,7 @@ public class GameHistoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_game_history, container, false);
-
     }
 
     @Override
@@ -45,15 +43,11 @@ public class GameHistoryFragment extends Fragment {
                 + OldGamesRepo.getInstance().getData().get(0).getDate());
     }
 
-    private void setupToolbar(@NonNull View view) {//в този метод свързваме toolbar и navController
-        //създаваме Нав-контролер, containerView - къде се намира nav_graph
+    private void setupToolbar(@NonNull View view) {
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_container);
-        //долното - готова схема копирана от сайт
         AppBarConfiguration appBarConfiguration =
                 new AppBarConfiguration.Builder(navController.getGraph()).build();
-        //създаваме тоолбар
         Toolbar toolbar = view.findViewById(R.id.toolbar5);
-        //свързваме toolbar с navController
         NavigationUI.setupWithNavController(
                 toolbar, navController, appBarConfiguration);
     }

@@ -60,8 +60,6 @@ public class FinalResultsFragment extends Fragment {
         createOldGame();
 
         binding.btnEnd.setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_finalResultsFragment_to_splashFragment));
-
-
     }
 
     private void setWinner() {

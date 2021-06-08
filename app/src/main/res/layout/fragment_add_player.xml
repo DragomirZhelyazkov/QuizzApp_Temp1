@@ -16,7 +16,7 @@
         android:layout_marginStart="68dp"
         android:layout_marginTop="132dp"
         android:background="@drawable/stroke_light_blue"
-        android:text="Add Player"
+        android:text="Add Player 1"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
         android:layout_marginTop="132dp"
         android:layout_marginEnd="60dp"
         android:background="@drawable/stroke_light_blue"
-        android:text="Add Player"
+        android:text="Add Player 2"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,7 @@
         android:layout_marginTop="312dp"
         android:layout_marginEnd="60dp"
         android:background="@drawable/stroke_light_blue"
-        android:text="Add Player"
+        android:text="Add Player 4"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -52,7 +52,7 @@
         android:layout_marginStart="68dp"
         android:layout_marginTop="312dp"
         android:background="@drawable/stroke_light_blue"
-        android:text="Add Player"
+        android:text="Add Player 3"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

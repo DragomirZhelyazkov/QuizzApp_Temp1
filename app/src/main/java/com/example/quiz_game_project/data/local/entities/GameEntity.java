@@ -28,28 +28,6 @@ public class GameEntity implements AdapterData {
     @ColumnInfo(name = "difficulty")
     public int difficulty;
 
-//    @ColumnInfo(name = "catOneDificulty")
-//    public int catOneDificulty;
-//
-//    public int getCatOneDificulty() {
-//        return catOneDificulty;
-//    }
-//
-//    public int getCatTwoDificulty() {
-//        return catTwoDificulty;
-//    }
-//
-//    public void setCatOneDificulty(int catOneDificulty) {
-//        this.catOneDificulty = catOneDificulty;
-//    }
-//
-//    public void setCatTwoDificulty(int catTwoDificulty) {
-//        this.catTwoDificulty = catTwoDificulty;
-//    }
-
-//    @ColumnInfo(name = "catTwoDificulty")
-//    public int catTwoDificulty;
-
     @ColumnInfo(name = "lastplayed")
     public String lastplayed;
 
@@ -129,12 +107,9 @@ public class GameEntity implements AdapterData {
         return secondroundduration;
     }
 
-
     public String getFlag() {
         return flag;
     }
-
-
 
 
 

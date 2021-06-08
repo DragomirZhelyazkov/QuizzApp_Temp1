@@ -28,13 +28,6 @@ public class ActiveGameViewHolder extends CustomViewHolder<GameEntity> {
         icon = itemView.findViewById(R.id.imageView3);
         dificulty = itemView.findViewById(R.id.txtDificulty);
     }
-//    public void bindData(GameEntity game) {
-//        txtTitle.setText(game.getName());
-//        txtFirstCategory.setText(game.getCategory1());
-//        txtSecondCategory.setText(game.getCategory2());
-//        icon.setText(game.getIcon());
-//        dificulty.setRating((float) game.getDifficulty());
-//    }
 
     @Override
     public void setData(GameEntity game){

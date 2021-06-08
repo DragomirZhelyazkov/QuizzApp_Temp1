@@ -19,12 +19,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiWrapper {
 
-//    private final QuestionsApiService service;
-//
-//    public ApiWrapper(AsyncDatabase asyncDatabase, QuestionsApiService service) {
-//        this.service = service;
-//    }
-
     private static ApiWrapper instance;
     private final QuestionsApiService service;
 
@@ -46,17 +40,17 @@ public class ApiWrapper {
     }
 
     public void getAllCategories(OnApiResultListener<Category []> callback) {
+        Log.i("Info log", "-----@@  ApiWrapper  @@@------ " );
         service.getAllCategs().enqueue(new Callback<AllCategories>() {
             @Override
             public void onResponse(Call<AllCategories> call, Response<AllCategories> response) {
-//                List<Category> allCategory = new ArrayList<>();
                 if (response.isSuccessful()) {
+                    Log.i("Info log", "-----@@  ApiWrapper Success  @@@------ " );
                     AllCategories categories = response.body();
-
-
                     callback.onSuccess(categories.getAllCategorys());
                 } else {
                     callback.onFailure();
+
                 }
             }
 
@@ -67,9 +61,6 @@ public class ApiWrapper {
         });
     }
 
-
-
-
     public void getTheQuestions(int numberOfQuestions, int chosenCategory, int difficulty,
                                 String type1, OnApiResultListener<Result[]> callback) {
         String difficultyLevel = setDificulty(difficulty);
@@ -78,8 +69,8 @@ public class ApiWrapper {
             @Override
             public void onResponse(Call<QuestionsResponse> call, Response<QuestionsResponse> response) {
                 if (response.isSuccessful()) {
-                   QuestionsResponse questionsResponse = response.body();
-                   callback.onSuccess(questionsResponse.getResults());
+                    QuestionsResponse questionsResponse = response.body();
+                    callback.onSuccess(questionsResponse.getResults());
                 } else {
                     callback.onFailure();
                 }
@@ -91,14 +82,10 @@ public class ApiWrapper {
             }
         });
     }
-    //ново!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     public void getRoundTwoQuestions(int numberOfQuestions, int chosenCategory, int difficulty,
                                      String type, OnApiResultListener<Result[]> callback) {
-//        Log.i("Info log",
-//                "-----@@@@@@@@------ "  + numberOfQuestions + chosenCategory + type + difficulty);
         String difficultyLevel = setDificulty(difficulty);
-//        Log.i("Info log",
-//                "-----@@@@@@@@------ "  + difficultyLevel);
         service.getRoundTwoQuestions(numberOfQuestions, chosenCategory, difficultyLevel,
                 type).enqueue(new Callback<QuestionsResponse>() {
             @Override
@@ -117,11 +104,6 @@ public class ApiWrapper {
             }
         });
     }
-
-
-
-
-
 
     private String setDificulty(int difficulty) {
         String level = "easy";

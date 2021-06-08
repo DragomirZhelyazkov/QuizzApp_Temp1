@@ -54,7 +54,6 @@ public class SecondRoundQuestionsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
     }
 
     @Override
@@ -77,7 +76,6 @@ public class SecondRoundQuestionsFragment extends Fragment {
             Log.i("Info log", "---- ---- " + secondRoundOneCategories[i]);
         }
 
-
         binding.txtPlayerName.setText(name1);
 
         activePlayer = name1;
@@ -93,10 +91,7 @@ public class SecondRoundQuestionsFragment extends Fragment {
 
         //няма нужда
         if (activePlayer.equals(name1)) {
-//            flag = 1;
-
-            startTimer(CurrentGame.secondRoundDuration - 1, binding.timerRoundTwo, winerRoundOneCategories[0]);//ново!!!!!
-
+            startTimer(CurrentGame.secondRoundDuration - 1, binding.timerRoundTwo, winerRoundOneCategories[0]);
             ThreadUtils.mainThread().post(() -> timer1(view));
         }
     }
@@ -112,12 +107,11 @@ public class SecondRoundQuestionsFragment extends Fragment {
 
                 ThreadUtils.mainThread().post(() -> startTimer(CurrentGame.secondRoundDuration - 1,
                         binding.timerRoundTwo,
-                        winerRoundOneCategories[1])); //ново!!!!!
+                        winerRoundOneCategories[1]));
 
                 ThreadUtils.mainThread().post(() -> timer2(view));
             }
-        }, CurrentGame.secondRoundDuration*1000);//да се сложи правилното
-        // число!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        }, CurrentGame.secondRoundDuration*1000);
     }
 
     private void timer2(View view) {
@@ -253,8 +247,6 @@ public class SecondRoundQuestionsFragment extends Fragment {
     private void onAnswerFalseClicked(View view1) {
         if (currentCategory == 1 ){
             if (QuestionRoundTwoRepo.getInstance().getCorrectAnswer(rand_int1).equals("False")){
-//            Log.i("Info log",
-//                    "----answer ---- " + QuestionRoundTwoRepo.getInstance().getCorrectAnswer(rand_int1));
                 addToScore();
                 rand_int1 = rand.nextInt(14);
                 setQuestion(rand_int1);
@@ -265,8 +257,6 @@ public class SecondRoundQuestionsFragment extends Fragment {
             }
         } else if (currentCategory == 2 ) {
             if (QuestionRoundTwoRepo.getInstance().getCorrectAnswer2(rand_int1).equals("False")){
-//            Log.i("Info log",
-//                    "----answer ---- " + QuestionRoundTwoRepo.getInstance().getCorrectAnswer(rand_int1));
                 addToScore();
                 rand_int1 = rand.nextInt(14);
                 setQuestion(rand_int1);
@@ -283,7 +273,7 @@ public class SecondRoundQuestionsFragment extends Fragment {
         rand_int1 = rand.nextInt(14);
         setQuestion(rand_int1);
     }
-        //тези двата метода в отделен клас?????????????????????????????????????????
+
     private void addToScore() {
         if(activePlayer.equals(name1)){
             if (name1.equals(PlayerOne.name)) PlayerOne.playerOneScore++;

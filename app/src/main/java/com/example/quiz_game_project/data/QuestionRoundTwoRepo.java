@@ -18,16 +18,12 @@ public class QuestionRoundTwoRepo {
         this.roundTwoQuestions2 = new Result[]{};
     }
 
-
-
     public Result[] getRoundTwoQuestions() {
         return roundTwoQuestions;
     }
     public void setRoundTwoQuestions(Result[] roundTwoQuestions) {
         this.roundTwoQuestions = roundTwoQuestions;
     }
-
-
 
     public Result[] getRoundTwoQuestions2() {
         return roundTwoQuestions2;
@@ -36,8 +32,6 @@ public class QuestionRoundTwoRepo {
         this.roundTwoQuestions2 = roundTwoQuestions2;
     }
 
-
-
     public String getQuestion(int i) {
         return roundTwoQuestions[i].question;
     }
@@ -45,15 +39,12 @@ public class QuestionRoundTwoRepo {
         return roundTwoQuestions2[i].question;
     }
 
-
-
     public String[] getIncorrectAnswers(int i) {
         return roundTwoQuestions[i].incorrect_answers;
     }
     public String[] getIncorrectAnswers2(int i) {
         return roundTwoQuestions2[i].incorrect_answers;
     }
-
 
 
     public String getCorrectAnswer(int i) {

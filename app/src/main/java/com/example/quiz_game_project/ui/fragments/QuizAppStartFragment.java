@@ -49,13 +49,11 @@ public class QuizAppStartFragment extends Fragment {
 
     private FragmentQuizAppStartBinding binding;
     private QuizAppStartController controller;
-//    private Category[] categories;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentQuizAppStartBinding.inflate(inflater, container, false);
-//        ((QuizGameApplication) getActivity().getApplication()).getAppComponent().inject(this);
         return this.binding.getRoot();
     }
 
@@ -66,26 +64,20 @@ public class QuizAppStartFragment extends Fragment {
         setupToolbar(view);
         controller = new QuizAppStartController(callback);
         controller.setCallback(callback);
-//        controller.showErrorLiveData.observe(getViewLifecycleOwner(),
-//                s -> Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show());
         initAddGameListener();
 
         controller.onUiLoaded();
         controller.saveAllCategories();
-
     }
 
     private void setupToolbar(View view) {
         Toolbar toolbar = binding.toolbar2;
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-
     }
 
     private void initAddGameListener() {// да се оправят имената
         binding.btnCreateGame.setOnClickListener(view1 -> Navigation.findNavController(view1).navigate(R.id.action_quizAppStart_to_createGame));
     }
-
-
 
     private void setRecViewData(List<AdapterData> data) {
         GamesAdapter adapter = new GamesAdapter(data);
@@ -103,7 +95,6 @@ public class QuizAppStartFragment extends Fragment {
                 Log.i("Info log",
                         "-----@@@@@@@@------ " + categoryOneId + "   "  + categoryTwoId);
 
-                //ново------------------------------------------------------------------------
                 controller.saveRoundTwoQuestions(categoryOneId, categoryOne, categoryTwo,
                         difficulty);
                 controller.saveRoundTwoQuestions(categoryTwoId, categoryOne, categoryTwo,
@@ -119,7 +110,7 @@ public class QuizAppStartFragment extends Fragment {
         });
     }
 
-    private void onRecycleRowClicked(int id) {//????????????
+    private void onRecycleRowClicked(int id) {
         Bundle data = new Bundle();
         data.putInt("game_id", id);
         Navigation.findNavController(getView()).navigate(R.id.action_quizAppStart_to_existingGames, data);
@@ -128,7 +119,6 @@ public class QuizAppStartFragment extends Fragment {
     private QuizAppStartController.QuizAppStartControllerCallback callback =
             new QuizAppStartController.QuizAppStartControllerCallback() {
                 @Override
-                //нoво=======================================================================
                 public void showGames(List<GameEntity> data) {
                     if (data != null) {
                         List <AdapterData> adapterData = new ArrayList<>();
@@ -141,51 +131,35 @@ public class QuizAppStartFragment extends Fragment {
                         for (int i = 0; i < oldGames.size(); i++){
                             adapterData.add(oldGames.get(i));
                         }
-                        Log.i("Info log", "-----OLDGAME------ " + adapterData.size());
 
-                //=========================================================================
-
-                    setRecViewData(adapterData); }
+                        setRecViewData(adapterData); }
                 }
 
                 @Override
                 public void saveCategories(Category[] data) {
-//                    categories = data;
-//                    for (int i = 0; i < data.length; i++) {
-//                        Log.i("Info log", "-------------------- " + data[i].name);
-                        CategoryRepository.getInstance().saveCategories(data);
-//                    }
+                    CategoryRepository.getInstance().saveCategories(data);
+
                 }
 
                 @Override
                 public void saveQuestions(Result[] questions, String categoryOne,
                                           String categoryTwo) {
-//                    Log.i("Info log", "-------------------- " + questions[0].category);
                     if (questions[0].category.equals(categoryOne)) {
                         QuestionsCategoryOneRepo.getInstance().setCategotyOneQuestions(questions);
-//                        Log.i("Info log",
-//                                "-------------------- " + QuestionsCategoryOneRepo.getInstance().getQuestion(4));
                     }
                     else {
                         QuestionsCategoryTwoRepo.getInstance().setCategotyTwoQuestions(questions);
-//                        Log.i("Info log",
-//                                "-------------------- " + QuestionsCategoryTwoRepo.getInstance().getQuestion(4));
                     }
                 }
 
                 @Override
                 public void saveRoundTwoQuestions(Result[] questions, String categoryOne,
-                                          String categoryTwo) {
-//                    Log.i("Info log",
-//                            "-----@@@@@@@@------ " + questions.length);
+                                                  String categoryTwo) {
                     if (questions[0].category.equals(categoryOne)) {
                         QuestionRoundTwoRepo.getInstance().setRoundTwoQuestions(questions);
-                        Log.i("Info log",
-                                "-----@@@@@@@@1------ " + QuestionRoundTwoRepo.getInstance().getQuestion(12));
                     } else {
                         QuestionRoundTwoRepo.getInstance().setRoundTwoQuestions2(questions);
-                        Log.i("Info log",
-                                "-----@@@@@@@@2------ " + QuestionRoundTwoRepo.getInstance().getQuestion2(0));
+
                     }
                 }
             };

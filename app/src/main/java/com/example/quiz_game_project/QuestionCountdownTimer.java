@@ -16,7 +16,7 @@ public class QuestionCountdownTimer {
         this.text = text;
     }
 
-    public void reverseTimer(int Seconds, TextView tv) {//pred tv imashe final=================
+    public void reverseTimer(int Seconds, TextView tv) {
         new CountDownTimer(Seconds * 1000 + 1000, 1000) {
             public void onTick(long millisUntilFinished) {
                 int seconds = (int) (millisUntilFinished / 1000);

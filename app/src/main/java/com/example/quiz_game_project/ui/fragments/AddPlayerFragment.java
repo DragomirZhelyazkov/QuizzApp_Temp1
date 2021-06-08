@@ -80,17 +80,11 @@ public class AddPlayerFragment extends Fragment {
     }
 
     private void onButtonАddPlayer1Clicked(int index, View view) {
-// Create custom dialog object
         dialog = new Dialog(getContext());
-        // Include dialog.xml file
         dialog.setContentView(R.layout.addplayerdialog);
-        // Set dialog title
         dialog.setTitle("AddPlayer");
-        // set values for custom dialog components - text, image and button
         name = (EditText) dialog.findViewById(R.id.editName);
-//        ImageView image = (ImageView) dialog.findViewById(R.id.imageView6);
         image = (ImageView) dialog.findViewById(R.id.imageView6);
-//        image.setImageResource(R.drawable.image0);
 
         dialog.show();
 
@@ -98,7 +92,6 @@ public class AddPlayerFragment extends Fragment {
         Button camera = (Button) dialog.findViewById(R.id.button2);
         Button cancel = (Button) dialog.findViewById(R.id.button4);
         Button add = (Button) dialog.findViewById(R.id.button3);
-        // if decline button is clicked, close the custom dialog
 
         cancel.setOnClickListener((View.OnClickListener) v -> { dialog.dismiss(); });
         add.setOnClickListener(new View.OnClickListener() {
@@ -133,9 +126,7 @@ public class AddPlayerFragment extends Fragment {
 
         } else if(requestCode == 1 && resultCode == Activity.RESULT_OK) {
             uri =  data.getData();
-            //-----------------------------------------------------------------------------
             String path = getPathFromURI(uri);
-            // Set the image in ImageView
             image.setImageURI(uri);
             imageBitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
             }
@@ -187,13 +178,13 @@ public class AddPlayerFragment extends Fragment {
         Log.i("Info log",
                 "-------------------- " + FirstRoundCounter.roundNumber);
         PlayerOne.name = binding.name1.getText().toString();
-        PlayerOne.playerOneScore = 1;
+        PlayerOne.playerOneScore = 0;
         PlayerTwo.name = binding.name2.getText().toString();
-        PlayerTwo.playerTwoScore = 1;
+        PlayerTwo.playerTwoScore = 0;
         PlayerThree.name = binding.name3.getText().toString();
-        PlayerThree.playerThreeScore = 1;
+        PlayerThree.playerThreeScore = 0;
         PlayerFour.name = binding.name4.getText().toString();
-        PlayerFour.playerFourScore = 1;
+        PlayerFour.playerFourScore = 0;
 
         Log.i("Info log",
                 "------NnumPlayers----- " + CurrentGame.numberOfPlayers);
@@ -207,15 +198,11 @@ public class AddPlayerFragment extends Fragment {
     }
 
 
-    private void setupToolbar(@NonNull View view) {//в този метод свързваме toolbar и navController
-        //създаваме Нав-контролер, containerView - къде се намира nav_graph
+    private void setupToolbar(@NonNull View view) {
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_container);
-        //долното - готова схема копирана от сайт
         AppBarConfiguration appBarConfiguration =
                 new AppBarConfiguration.Builder(navController.getGraph()).build();
-        //създаваме тоолбар
         Toolbar toolbar = binding.toolbar4;
-        //свързваме toolbar с navController
         NavigationUI.setupWithNavController(
                 toolbar, navController, appBarConfiguration);
     }

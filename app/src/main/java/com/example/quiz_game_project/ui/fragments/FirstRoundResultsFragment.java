@@ -21,6 +21,7 @@ import com.example.quiz_game_project.PlayData.PlayerOne;
 import com.example.quiz_game_project.PlayData.PlayerThree;
 import com.example.quiz_game_project.PlayData.PlayerTwo;
 import com.example.quiz_game_project.R;
+import com.example.quiz_game_project.data.local.CurrentGame;
 import com.example.quiz_game_project.databinding.FragmentFirstRoundResultsBinding;
 
 import java.util.ArrayList;
@@ -44,7 +45,6 @@ public class FirstRoundResultsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
     }
 
     @Override
@@ -61,8 +61,16 @@ public class FirstRoundResultsFragment extends Fragment {
         binding.txtPlayerOneScore.setText(PlayerOne.name + "   " + String.valueOf(PlayerOne
                         .playerOneScore));
         binding.txtPlayerTwoScore.setText(PlayerTwo.name + "   " + String.valueOf(PlayerTwo.playerTwoScore));
-        binding.txtPlayerThreeScore.setText(PlayerThree.name + "   " + String.valueOf(PlayerThree.playerThreeScore));
-        binding.txtPlayerFourScore.setText(PlayerFour.name + "   " + String.valueOf(PlayerFour.playerFourScore));
+        if (CurrentGame.numberOfPlayers > 2){
+            binding.txtPlayerThreeScore.setText(PlayerThree.name + "   " + String.valueOf(PlayerThree.playerThreeScore));
+        } else {
+            PlayerThree.playerThreeScore = -100;
+            PlayerFour.playerFourScore = -100;
+        }
+        if (CurrentGame.numberOfPlayers > 3) {
+            binding.txtPlayerFourScore.setText(PlayerFour.name + "   " + String.valueOf(PlayerFour.playerFourScore));
+        } else PlayerFour.playerFourScore = -100;
+
 
         sortResults();
         setWinner();
@@ -92,11 +100,11 @@ public class FirstRoundResultsFragment extends Fragment {
             binding.txtPlayerTwoScore.setAlpha((float) 1);
             setSecondPlace(PlayerTwo.name);
             winner1 = PlayerTwo.name;
-        } else if (PlayerThree.playerThreeScore == scores.get(0)) {
+        } else if (CurrentGame.numberOfPlayers > 2 && PlayerThree.playerThreeScore == scores.get(0)) {
             binding.txtPlayerThreeScore.setAlpha((float) 1);
             setSecondPlace(PlayerThree.name);
             winner1 = PlayerThree.name;
-        } else {
+        } else if (CurrentGame.numberOfPlayers > 3 && PlayerFour.playerFourScore == scores.get(0)) {
             binding.txtPlayerFourScore.setAlpha((float) 1);
             setSecondPlace(PlayerFour.name);
             winner1 = PlayerFour.name;

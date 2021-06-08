@@ -10,15 +10,15 @@ public class PlayerFour {
         this.name = name;
     }
 
-    public void setScore(int score) {
-        this.playerFourScore = playerFourScore;
-    }
+//    public void setScore(int score) {
+//        this.playerFourScore = playerFourScore;
+//    }
 
     public String getName() {
         return name;
     }
 
-    public int getScore() {
-        return playerFourScore;
-    }
+//    public int getScore() {
+//        return playerFourScore;
+//    }
 }

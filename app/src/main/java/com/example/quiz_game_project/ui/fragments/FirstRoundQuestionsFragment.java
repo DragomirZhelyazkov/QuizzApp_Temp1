@@ -44,12 +44,11 @@ public class FirstRoundQuestionsFragment extends Fragment {
     String name2;
     int numberOfPlayers;
     String activePlayer;
-    int correctAnswer;//nowo    @@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    int correctAnswer;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
     }
 
     @Override
@@ -74,13 +73,12 @@ public class FirstRoundQuestionsFragment extends Fragment {
             name2 = getArguments().getString("name2");
             binding.txtName2.setText(name2);
             binding.txtName2.setAlpha((float) 0.3);
-//            binding.txtQuestionNumber.setText(String.valueOf(FirstRoundCounter.roundNumber));
-            //ново!!!!!!!!!!!!
+
             numberOfPlayers = 2;
         }
 
         activePlayer = name1;
-        correctAnswer = 0;//ново  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        correctAnswer = 0;
 
         //да се изведе във функция!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         allAnswers = new String[4];
@@ -109,10 +107,6 @@ public class FirstRoundQuestionsFragment extends Fragment {
         binding.txtAnswer3.setOnClickListener(view1 -> onAnswerClicked(allAnswers[2], 3));
         binding.txtAnswer4.setOnClickListener(view1 -> onAnswerClicked(allAnswers[3], 4));
 
-//        Log.i("Info log", "----------????? " + activePlayer);
-//        Log.i("Info log", "----------????? " + numberOfPlayers);
-
-
         if (numberOfPlayers == 1) {
             ThreadUtils.mainThread().post(() -> timer1(view));
             startTimer(CurrentGame.firstRoundQuestionAnswer - 1, binding.txtTimer, "time to answer");
@@ -131,29 +125,16 @@ public class FirstRoundQuestionsFragment extends Fragment {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-//                Bundle fragmentData = new Bundle();
-//                fragmentData.putString("name1", PlayerOne.name);
-//                fragmentData.putString("name2", PlayerTwo.name);
-//                fragmentData.putString("name3", PlayerThree.name);
-//                fragmentData.putString("name4", PlayerFour.name);
-//                ThreadUtils.mainThread().post(() -> Navigation.findNavController(view).navigate(R.id.action_firstRoundQuestionsFragment_to_firstRoundPutFingersFragment, fragmentData));
                 goToPreveousScreen(view);
             }
-        }, CurrentGame.firstRoundQuestionAnswer*1000);//ново!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        }, CurrentGame.firstRoundQuestionAnswer*1000);
     }
 
     private void timer2(View view){
-//        Log.i("Info log", "----------????? " + "TIMER 2");
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 if (correctAnswer == 1){
-//                    Bundle fragmentData = new Bundle();
-//                    fragmentData.putString("name1", PlayerOne.name);
-//                    fragmentData.putString("name2", PlayerTwo.name);
-//                    fragmentData.putString("name3", PlayerThree.name);
-//                    fragmentData.putString("name4", PlayerFour.name);
-//                    ThreadUtils.mainThread().post(() -> Navigation.findNavController(view).navigate(R.id.action_firstRoundQuestionsFragment_to_firstRoundPutFingersFragment, fragmentData));
                     goToPreveousScreen(view);
                 } else {
                     binding.txtName1.setAlpha((float) 0.3);
@@ -163,20 +144,13 @@ public class FirstRoundQuestionsFragment extends Fragment {
                     ThreadUtils.mainThread().post(() -> startTimer(CurrentGame.firstRoundQuestionAnswer - 1, binding.txtTimer, "time to answer"));
                 }
             }
-        }, CurrentGame.firstRoundQuestionAnswer*1000);//ново!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        }, CurrentGame.firstRoundQuestionAnswer*1000);
     }
 
     private void timer3(View view){
-//        Log.i("Info log", "----------????? " + "TIMER 3");
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-//                Bundle fragmentData = new Bundle();
-//                fragmentData.putString("name1", PlayerOne.name);
-//                fragmentData.putString("name2", PlayerTwo.name);
-//                fragmentData.putString("name3", PlayerThree.name);
-//                fragmentData.putString("name4", PlayerFour.name);
-//                ThreadUtils.mainThread().post(() -> Navigation.findNavController(view).navigate(R.id.action_firstRoundQuestionsFragment_to_firstRoundPutFingersFragment, fragmentData));
                 goToPreveousScreen(view);
             }
         }, CurrentGame.firstRoundQuestionAnswer*1000);//ново!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -204,7 +178,7 @@ public class FirstRoundQuestionsFragment extends Fragment {
                     break;
             }
             ThreadUtils.executorService().submit(() -> addToScore());
-            correctAnswer = 1;//nowo   @@@@@@@@@@@@@@@@@@@@@@@@@
+            correctAnswer = 1;
         } else {
             switch (index){
                 case 1 : binding.txtAnswer1.setBackgroundResource(R.color.purple_200);

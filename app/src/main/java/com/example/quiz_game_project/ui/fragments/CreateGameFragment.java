@@ -46,7 +46,7 @@ public class CreateGameFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         setupToolbar(view);
-//        setupViews(view);
+
         binding.btnCreateGame.setOnClickListener(view1 -> onCreateGameClicked(view));
         binding.imgShowCategories.setOnClickListener(view1 -> addCategory(view));
         binding.imgDelCategoryOne.setOnClickListener(view2 -> binding.txtCategoryOne.setText(
@@ -112,15 +112,11 @@ public class CreateGameFragment extends Fragment {
         AsyncDatabase.getInstance().insert(gameEntity);
     }
 
-    private void setupToolbar(@NonNull View view) {//в този метод свързваме toolbar и navController
-        //създаваме Нав-контролер, containerView - къде се намира nav_graph
+    private void setupToolbar(@NonNull View view) {
         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_container);
-        //долното - готова схема копирана от сайт
         AppBarConfiguration appBarConfiguration =
                 new AppBarConfiguration.Builder(navController.getGraph()).build();
-        //създаваме тоолбар
         Toolbar toolbar = view.findViewById(R.id.toolbar);
-        //свързваме toolbar с navController
         NavigationUI.setupWithNavController(
                 toolbar, navController, appBarConfiguration);
     }

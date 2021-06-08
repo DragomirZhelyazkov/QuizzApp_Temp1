@@ -23,11 +23,6 @@ import java.util.List;
 public class GamesAdapter extends RecyclerView.Adapter<CustomViewHolder> {//===
 
     private List<AdapterData> games;
-//    String categoryOne;
-//    String categoryTwo;
-//    int id;
-//    int difficulty;
-    //private List<String> selectedUrls;
     private OnRowClickedListener listener;
     private static final int TYPE_GAME = 1;
     private static final int TYPE_HEADER = 2;
@@ -35,7 +30,6 @@ public class GamesAdapter extends RecyclerView.Adapter<CustomViewHolder> {//===
 
     public GamesAdapter(List<AdapterData> games) {
         this.games = games;
-        //this.selectedUrls = new ArrayList<>();
     }
 
     @Override
