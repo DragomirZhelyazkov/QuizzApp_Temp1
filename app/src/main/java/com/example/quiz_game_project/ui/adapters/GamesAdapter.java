@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.quiz_game_project.PlayData.OldGame;
 import com.example.quiz_game_project.ThreadUtils;
 import com.example.quiz_game_project.data.QuestionRoundTwoRepo;
+import com.example.quiz_game_project.data.local.AsyncDatabase;
 import com.example.quiz_game_project.data.local.entities.GameEntity;
 import com.squareup.picasso.Picasso;
 import com.example.quiz_game_project.R;
@@ -72,15 +73,22 @@ public class GamesAdapter extends RecyclerView.Adapter<CustomViewHolder> {//===
             String categoryOne = ((GameEntity) game).getCategory1();
             String categoryTwo = ((GameEntity) game).getCategory2();
             int difficulty = ((GameEntity) game).getDifficulty();
-            holder.itemView.findViewById(R.id.imgDel).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    listener.onDelClicked(id);
-//                GamesAdapter.this.removeRow(position);
-                }
+
+            holder.itemView.findViewById(R.id.imgDel).setOnClickListener( view -> {
+                AsyncDatabase.getInstance().delete((GameEntity) game);
+                GamesAdapter.this.removeRow(position);
             });
+//
+//            holder.itemView.findViewById(R.id.imgDel).setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    listener.onDelClicked(id);
+//                }
+//            });
+
             holder.itemView.setOnClickListener(view -> listener.onRowClicked(id, categoryOne,
                     categoryTwo, difficulty));
+
         } else if(game instanceof OldGame){
             holder.itemView.setOnClickListener(view -> ThreadUtils.mainThread()
                     .post(() -> Navigation.findNavController(view)
