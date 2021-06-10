@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import android.os.Handler;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -161,13 +162,13 @@ public class SecondRoundQuestionsFragment extends Fragment {
     private void setQuestion(int rundomNumber) {
         if (flag == 1) {
             if (winerRoundOneCategories[0].equals(CurrentGame.category1)){
-                binding.txtQuestion.setText(QuestionRoundTwoRepo.getInstance().getQuestion(rundomNumber));
+                binding.txtQuestion.setText(Html.fromHtml(QuestionRoundTwoRepo.getInstance().getQuestion(rundomNumber)));
                 currentCategory = 1;
                 Log.i("Info log", "----category ---- " + CurrentGame.category1);
                 Log.i("Info log",
                         "----answer ---- " + QuestionRoundTwoRepo.getInstance().getCorrectAnswer(rundomNumber));
             } else {
-                binding.txtQuestion.setText(QuestionRoundTwoRepo.getInstance().getQuestion2(rundomNumber));
+                binding.txtQuestion.setText(Html.fromHtml(QuestionRoundTwoRepo.getInstance().getQuestion2(rundomNumber)));
                 currentCategory = 2;
                 Log.i("Info log", "----category ---- " + CurrentGame.category2);
                 Log.i("Info log",
@@ -175,13 +176,13 @@ public class SecondRoundQuestionsFragment extends Fragment {
             }
         } else if (flag == 2) {
             if (winerRoundOneCategories[1].equals(CurrentGame.category1)){
-                binding.txtQuestion.setText(QuestionRoundTwoRepo.getInstance().getQuestion(rundomNumber));
+                binding.txtQuestion.setText(Html.fromHtml(QuestionRoundTwoRepo.getInstance().getQuestion(rundomNumber)));
                 currentCategory = 1;
                 Log.i("Info log", "----category ---- " + CurrentGame.category1);
                 Log.i("Info log",
                         "----answer ---- " + QuestionRoundTwoRepo.getInstance().getCorrectAnswer(rundomNumber));
             } else {
-                binding.txtQuestion.setText(QuestionRoundTwoRepo.getInstance().getQuestion2(rundomNumber));
+                binding.txtQuestion.setText(Html.fromHtml(QuestionRoundTwoRepo.getInstance().getQuestion2(rundomNumber)));
                 currentCategory = 2;
                 Log.i("Info log", "----category ---- " + CurrentGame.category2);
                 Log.i("Info log",
@@ -189,13 +190,13 @@ public class SecondRoundQuestionsFragment extends Fragment {
             }
         } else if (flag == 3) {
             if (secondRoundOneCategories[0].equals(CurrentGame.category1)){
-                binding.txtQuestion.setText(QuestionRoundTwoRepo.getInstance().getQuestion(rundomNumber));
+                binding.txtQuestion.setText(Html.fromHtml(QuestionRoundTwoRepo.getInstance().getQuestion(rundomNumber)));
                 currentCategory = 1;
                 Log.i("Info log", "----category ---- " + CurrentGame.category1);
                 Log.i("Info log",
                         "----answer ---- " + QuestionRoundTwoRepo.getInstance().getCorrectAnswer(rundomNumber));
             } else {
-                binding.txtQuestion.setText(QuestionRoundTwoRepo.getInstance().getQuestion2(rundomNumber));
+                binding.txtQuestion.setText(Html.fromHtml(QuestionRoundTwoRepo.getInstance().getQuestion2(rundomNumber)));
                 currentCategory = 2;
                 Log.i("Info log", "----category ---- " + CurrentGame.category2);
                 Log.i("Info log",
@@ -203,13 +204,13 @@ public class SecondRoundQuestionsFragment extends Fragment {
             }
         } else if (flag == 4){
             if (secondRoundOneCategories[1].equals(CurrentGame.category1)){
-                binding.txtQuestion.setText(QuestionRoundTwoRepo.getInstance().getQuestion(rundomNumber));
+                binding.txtQuestion.setText(Html.fromHtml(QuestionRoundTwoRepo.getInstance().getQuestion(rundomNumber)));
                 currentCategory = 1;
                 Log.i("Info log", "----category ---- " + CurrentGame.category1);
                 Log.i("Info log",
                         "----answer ---- " + QuestionRoundTwoRepo.getInstance().getCorrectAnswer(rundomNumber));
             } else {
-                binding.txtQuestion.setText(QuestionRoundTwoRepo.getInstance().getQuestion2(rundomNumber));
+                binding.txtQuestion.setText(Html.fromHtml(QuestionRoundTwoRepo.getInstance().getQuestion2(rundomNumber)));
                 currentCategory = 2;
                 Log.i("Info log", "----category ---- " + CurrentGame.category2);
                 Log.i("Info log",
