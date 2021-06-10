@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -140,10 +141,10 @@ public class FirstRoundPutFingersFragment extends Fragment {
         int roundCounter = FirstRoundCounter.roundNumber;
         if (randNumber == 0) {
             Log.i("Info log", "--------@@@@@@@@@-----  GeneralKnowlege");
-            binding.txtQuestionBox.setText(QuestionsCategoryOneRepo.getInstance().getQuestion(roundCounter));
+            binding.txtQuestionBox.setText(Html.fromHtml(QuestionsCategoryOneRepo.getInstance().getQuestion(roundCounter)));
         } else {
             Log.i("Info log", "--------@@@@@@@@@-----  Geography");
-            binding.txtQuestionBox.setText(QuestionsCategoryTwoRepo.getInstance().getQuestion(roundCounter));
+            binding.txtQuestionBox.setText(Html.fromHtml(QuestionsCategoryTwoRepo.getInstance().getQuestion(roundCounter)));
         }
         roundCounter++;
         FirstRoundCounter.roundNumber = roundCounter;
