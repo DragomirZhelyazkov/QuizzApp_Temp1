@@ -222,20 +222,24 @@ public class SecondRoundQuestionsFragment extends Fragment {
     private void onAnswerTrueClicked(View v) {
         if (currentCategory == 1 ){
             if (QuestionRoundTwoRepo.getInstance().getCorrectAnswer(rand_int1).equals("True")){
+                ThreadUtils.mainThread().post(() -> flashCorrectAnswerOnBtnTrue());
                 addToScore();
                 rand_int1 = rand.nextInt(14);
                 setQuestion(rand_int1);
             } else {
+                ThreadUtils.mainThread().post(() -> flashWrongAnswerOnBtnTrue());
                 removeFromScore();
                 rand_int1 = rand.nextInt(14);
                 setQuestion(rand_int1);
             }
         } else if (currentCategory == 2 ) {
             if (QuestionRoundTwoRepo.getInstance().getCorrectAnswer2(rand_int1).equals("True")){
+                ThreadUtils.mainThread().post(() -> flashCorrectAnswerOnBtnTrue());
                 addToScore();
                 rand_int1 = rand.nextInt(14);
                 setQuestion(rand_int1);
             } else {
+                ThreadUtils.mainThread().post(() -> flashWrongAnswerOnBtnTrue());
                 removeFromScore();
                 rand_int1 = rand.nextInt(14);
                 setQuestion(rand_int1);
@@ -247,20 +251,24 @@ public class SecondRoundQuestionsFragment extends Fragment {
     private void onAnswerFalseClicked(View view1) {
         if (currentCategory == 1 ){
             if (QuestionRoundTwoRepo.getInstance().getCorrectAnswer(rand_int1).equals("False")){
+                ThreadUtils.mainThread().post(() -> flashCorrectAnswerOnBtnFalse());
                 addToScore();
                 rand_int1 = rand.nextInt(14);
                 setQuestion(rand_int1);
             } else {
+                ThreadUtils.mainThread().post(() -> flashWrongAnswerOnBtnFalse());
                 removeFromScore();
                 rand_int1 = rand.nextInt(14);
                 setQuestion(rand_int1);
             }
         } else if (currentCategory == 2 ) {
             if (QuestionRoundTwoRepo.getInstance().getCorrectAnswer2(rand_int1).equals("False")){
+                ThreadUtils.mainThread().post(() -> flashCorrectAnswerOnBtnFalse());
                 addToScore();
                 rand_int1 = rand.nextInt(14);
                 setQuestion(rand_int1);
             } else {
+                ThreadUtils.mainThread().post(() -> flashWrongAnswerOnBtnFalse());
                 removeFromScore();
                 rand_int1 = rand.nextInt(14);
                 setQuestion(rand_int1);
@@ -304,6 +312,46 @@ public class SecondRoundQuestionsFragment extends Fragment {
 
     private void startTimer(int sec, TextView tv, String text) {
         new QuestionCountdownTimer(tv, sec, text).reverseTimer(sec, tv);
+    }
+
+    private void flashCorrectAnswerOnBtnTrue(){
+        binding.txtTrue.setBackgroundResource(R.color.yellow);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                binding.txtTrue.setBackgroundResource(R.drawable.mag_white);
+            }
+        }, 1000);
+    }
+
+    private void flashCorrectAnswerOnBtnFalse(){
+        binding.txtFalse.setBackgroundResource(R.color.yellow);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                binding.txtFalse.setBackgroundResource(R.drawable.mag_white);
+            }
+        }, 1000);
+    }
+
+    private void flashWrongAnswerOnBtnTrue(){
+        binding.txtTrue.setBackgroundResource(R.color.purple_200);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                binding.txtTrue.setBackgroundResource(R.drawable.mag_white);
+            }
+        }, 1000);
+    }
+
+    private void flashWrongAnswerOnBtnFalse(){
+        binding.txtFalse.setBackgroundResource(R.color.purple_200);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                binding.txtFalse.setBackgroundResource(R.drawable.mag_white);
+            }
+        }, 1000);
     }
 
 
